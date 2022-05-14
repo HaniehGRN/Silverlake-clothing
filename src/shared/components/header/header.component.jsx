@@ -1,32 +1,38 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import { SiBigcartel } from "react-icons/si";
+import { HiMail, HiShoppingCart, HiLogin, HiLogout, HiSearch } from "react-icons/hi";
 
-import CartIcon from "../cart-icon/cart-icon.component";
-import LoginIcon from "../login-icon/login-icon.component";
-import LogoutIcon from "../logout-icon/logout-icon.component";
-import SearchIcon from "../search-icon/search-icon.component";
 
 import "./header.styles.scss";
 
 const Header = () => {
+    const [email, setEmail] = useState('');
+    const handleChange = (event) => {
+        setEmail(event.target.value);
+    }
     return (
         <div className="header-container">
-            <div className="logo">
-                <SiBigcartel />
+            <div className="logo-container">
+                <div className="logo">
+                    <SiBigcartel />
+                    <span>Silverlake</span>
+                </div>
             </div>
             <div className="options-container">
-                <div>
-                    <CartIcon />
+                <div className="icon">
+                    <HiSearch />
                 </div>
-                <div>
-                    <LoginIcon />
+                {/* <div>
+                    <HiLogout />
+                </div> */}
+                <div className="icon">
+                    <HiMail />
                 </div>
-                <div>
-                    <LogoutIcon />
+                <div className="icon">
+                    <HiShoppingCart />
                 </div>
-                <div>
-                    <SearchIcon />
+                <div className="icon">
+                    <HiLogin />
                 </div>
             </div>
         </div>
