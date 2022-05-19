@@ -10,7 +10,7 @@ import "./sign-up.styles.scss";
 const SignUp = () => {
 
     const [email, setEmail] = useState('');
-
+    
     const handleChange = (event) => {
         setEmail(event.target.value);
     }
@@ -51,7 +51,7 @@ const SignUp = () => {
                 name="confirmPassword"
                 type="password"
                 value={email}
-                label="Ponfirm Password"
+                label="Confirm Password"
                 handleChange={handleChange}
                 required
             >

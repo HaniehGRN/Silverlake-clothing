@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { SiBigcartel } from "react-icons/si";
 import { HiMail, HiShoppingCart, HiLogin, HiLogout, HiSearch } from "react-icons/hi";
+import { MdMenuOpen } from "react-icons/md";
 
+import Modal from "../../../modules/auth/auth.component";
 
 import "./header.styles.scss";
 
@@ -30,6 +32,9 @@ const Header = () => {
                 </div>
                 <div className="icon">
                     <HiShoppingCart />
+                </div>
+                <div className="icon">
+                    <MdMenuOpen />
                 </div>
                 <div className="icon">
                     <HiLogin />
