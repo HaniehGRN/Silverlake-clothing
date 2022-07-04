@@ -10,4 +10,9 @@
   padding: 30px 25px;
   /* overflow: hidden; */
   height: 100vh;
+  /* background-color: #eeeaaf; */
+  color: rgb(247, 242, 242);
+  background-image: url("https://i1.sndcdn.com/avatars-000239536842-3bxden-t500x500.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
