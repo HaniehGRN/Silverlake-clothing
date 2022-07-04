@@ -10,7 +10,8 @@ const AuthPage = () => {
 
           return (
                     <div className="auth-page">
-                              <SignIn />
+                              <h2>Welcome.</h2>
+                              <SignUp/>
                     </div>
           )
 };

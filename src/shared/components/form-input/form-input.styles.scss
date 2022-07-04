@@ -22,7 +22,7 @@
                 color: rgb(230, 222, 222);
                 border: 2px solid rgb(230, 222, 222);
                 border-radius: 6px;
-                padding: 3px 0;
+               padding: 3px 0;
                 .form-input {
                         border: none;
                         border-left: 2px solid rgb(230, 222, 222);
@@ -30,6 +30,7 @@
                         font-size: 18px;
                         width:100%;
                         height: 100%;
+                        // padding: 5px 0;
                 }
                 .form-input:hover {
                         outline: none;

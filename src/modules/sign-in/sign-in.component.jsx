@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { MdEmail, MdOutlinePassword } from "react-icons/md";
 
+import CustomButton from "../../shared/components/custom-button/custom-button.component";
+
 import FormInput from "../../shared/components/form-input/form-input.component";
 
 import "./sign-in.styles.scss";
@@ -13,6 +15,10 @@ const SignIn = () => {
                     setEmail(event.target.value);
           }
 
+          const handleSubmit = () => {
+                    // store 
+          }
+
           return (
                     <div className="sign-in">
                               <div className="info-part">
@@ -20,9 +26,10 @@ const SignIn = () => {
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad neque nobis debitis aperiam
                                                   dolor ullam quia? Dolorum quasi, tempore ut asperiores qui distinctio temporibus sunt.
                                         </p>
+                                        <CustomButton>I Already have an account</CustomButton>
                               </div>
                               <div className="sign-in-part">
-                                        <form>
+                                        <form onSubmit={handleSubmit}>
                                                   <FormInput
                                                             name="email"
                                                             type="email"
@@ -43,6 +50,7 @@ const SignIn = () => {
                                                   >
                                                             <MdOutlinePassword />
                                                   </FormInput>
+                                                  <CustomButton>Log in</CustomButton>
                                         </form>
                               </div>
                     </div>
