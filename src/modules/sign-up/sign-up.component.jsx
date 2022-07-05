@@ -22,10 +22,6 @@ const SignUp = () => {
         setSignUpHoverState(true);
     }
 
-    const handleMouseLeaveSignUp = () => {
-        //setSignUpHoverState(false);
-    }
-
     const handleMouseEnterInfo = () => {
         setInfoHoverState(true);
         setSignUpHoverState(false);
@@ -52,9 +48,8 @@ const SignUp = () => {
                 <CustomButton>I Already have an account</CustomButton>
             </div>
             <div
-                className={`sign-up-part ${signUpHoverState === true ? "highlighted" : ""}`}
+                className={`auth-part ${signUpHoverState === true ? "highlighted" : ""}`}
                 onMouseEnter={handleMouseEnterSignUp}
-                onMouseLeave={handleMouseLeaveSignUp}
             >
                 <form>
                     <FormInput
@@ -97,7 +92,7 @@ const SignUp = () => {
                     >
                         < GiConfirmed />
                     </FormInput>
-                    <CustomButton className="sign-up-btn">CREATE MY ACCOUNT</CustomButton>
+                    <CustomButton>CREATE MY ACCOUNT</CustomButton>
                 </form>
             </div>
         </div>

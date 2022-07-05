@@ -5,36 +5,20 @@
 }
 
 .sign-in {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        padding: 25px;
-        align-items: center;
-        justify-content: center;
-
-         .sign-in-part,
-        .info-part {
-                background-color: #ffff;
-                border-radius: 5px;
-        }
-
-        .sign-in-part {
-                display: flex;
-                flex-direction: column;
-                width: 30%;
-                padding: 15px;
-        }
-
-        .info-part {
-                width: 40%;
-                padding: 35px;
-
-                h1 {
-                        margin-bottom: 10px;
+        .auth-part {
+                a {
+                        position: absolute;
+                        bottom: 40px;
+                        left: 33%;
+                        font-size: larger;
+                        text-decoration: none;
+                        cursor: pointer;
                 }
+        }
 
-                p {
-                        margin-bottom: 100px;
+        .info-part {
+                .custom-button {
+                        margin-top: 40px;
                 }
         }
 }

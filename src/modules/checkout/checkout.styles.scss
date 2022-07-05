@@ -1,0 +1,66 @@
+* {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+}
+
+.icon {
+          font-size: 21px;
+}
+
+.checkout-container {
+          overflow: hidden;
+          display: flex;
+          border-radius: 10px;
+          box-shadow: 10px 10px 25px rgb(0 0 0 / 10%), 10px 10px 25px rgb(0 0 0 / 10%);
+          background-color: rgb(255 255 255 / 10%);
+          flex-direction: column;
+          height: 100%;
+          // width: 100vw;
+          color: #fff;
+
+          .payment-details {
+                    // overflow: hidden;
+                    width: 40%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 15px ;
+                    padding-top: 30px;
+                    position: absolute;
+                    left: 9%;
+
+                    h1 {
+                              margin-bottom: 50px;
+                    }
+
+                    .exp-cvc {
+                              display: flex;
+                    }
+
+                    .expiration {
+                              display: flex;
+                    }
+
+                    .custom-button {
+                              margin-top: 35px;
+                              position: absolute;
+                              left: 6%;
+                              padding: 10px;
+                              width: 45%;
+                              background-color: rgb(153, 153, 215);
+                              color: #fff;
+                    }
+
+          }
+
+          .vertical-line {
+                    width: 3px;
+                    height: 79%;
+                    background-color: rgb(230, 222, 222);
+                    position: absolute;
+                    left: 60%;
+          }
+
+}

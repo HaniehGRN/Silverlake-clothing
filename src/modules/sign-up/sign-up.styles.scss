@@ -4,28 +4,62 @@
         padding: 0;
 }
 
-.sign-up {
+.sign-up,
+.sign-in {
         display: flex;
         width: 100%;
         height: 100%;
         padding: 25px;
         position: relative;
         justify-content: center;
-        color: #000;;
+        color: #000;
 
-        .sign-up-part,
+        .auth-part,
         .info-part {
                 background-color: #ffff;
                 border-radius: 10px;
                 position: absolute;
                 height: 88%;
-                transition: transform 0.4s cubic-bezier(0,.4,1,.49);
-                // border: 0.5px solid rgb(240, 208, 208);
+                transition: transform 0.4s cubic-bezier(0, 0.4, 1, 0.49);
                 transform: translateZ(100px);
                 box-shadow: 0 5px 25px rgb(0 0 0 / 10%), 0 10px 25px rgb(0 0 0 / 10%);
+                // opacity: 0.7;
         }
 
-        .sign-up-part {
+        .auth-part::before,
+        .auth-part::after,
+        .info-part::before,
+        .info-part::after {
+                content: "";
+                background-color: rgba(0, 0, 0, 0.1);
+                background-size: cover;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: 10px;
+        }
+
+        .highlighted::after,
+        .highlighted::before {
+                background-color: transparent;
+        }
+
+        .highlighted {
+                opacity: 1;
+                .custom-button {
+                        background-color: rgb(153, 153, 215);
+                        color: #fff;
+                }
+                .custom-button.google-sign-in {
+                        background-color: inherit;
+                        border: 2px solid rgb(230, 222, 222);
+                        color: #000;
+                }
+        }
+
+        .auth-part {
                 transform: scale(0.8);
                 display: flex;
                 flex-direction: column;
@@ -41,9 +75,25 @@
                 }
 
                 .custom-button {
-                        margin-top: 20px;
+                        margin-top: 21px;
                         width: 100%;
+                        border: 2px solid rgb(153, 153, 215);
+                        justify-content: center;
+                        align-items: center;
+
+                        .google-icon {
+                                width: 17px;
+                                height: 17px;
+                                transform: translateY(19%);
+                                margin-right: 2px;
+                        }
+
                 }
+
+                .custom-button.google-sign-in {
+                        margin-top: 17px;
+                }
+
         }
 
         .info-part {
@@ -53,19 +103,11 @@
                 padding: 20px 40px 20px 20px;
                 right: 45%;
                 flex-direction: column;
-                // justify-content: center;
 
                 &.highlighted {
                         transform: scale(0.95);
                         padding: 20px;
                         z-index: 100;
-                }
-
-                &::after, &::before {
-                        content: '';
-                        // background-color: rgba(119, 113, 113, 50);
-                        // width: 100%;
-                        // height: 100%;
                 }
 
                 h1 {
@@ -76,11 +118,11 @@
                         margin-top: 0px;
                         margin-bottom: 45px;
                 }
-                
+
                 .custom-button {
                         position: relative;
-                       bottom: -125px;
-                        // width: 100%;
+                        bottom: -125px;
+                        border: 2px solid rgb(153, 153, 215);
                 }
         }
 }
