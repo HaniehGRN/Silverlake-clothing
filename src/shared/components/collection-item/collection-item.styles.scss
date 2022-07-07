@@ -1,0 +1,69 @@
+* {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+}
+
+.collection-item {
+          display: flex;
+          flex-direction: column;
+          // height: 100%;
+          margin: 20px 10px;
+
+          .image {
+                    width: 270px;
+                    height: 300px;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+                    border-radius: 2px;
+                    position: relative;
+                    opacity: 0.8;
+
+                    &:hover {
+                              opacity: 1;
+                    }
+
+          }
+
+          .image::before,
+          .image::after {
+                    content: "";
+                    background-color: rgba(255, 255, 255, 0.1);
+                    background-size: cover;
+                    width: 270px;
+                    height: 300px;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+          }
+          .name-price {
+                    display: flex;
+                    flex-direction: column;
+                    transform: scale(0.9);
+                    font-weight: bold;
+
+                    .price {
+                              transform: scale(0.8);
+                    }
+          }
+
+          .collection-footer {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 5px;
+                    // font-size: medium;
+
+                    .icon {
+                              border-radius: 50%;
+                              border: 1px solid #fff;
+                              // transform: scale(2);
+                              transform: translateY(40%) scale(1.1);
+                              box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+                              // font-size: medium;
+                              padding: 4px;
+                              cursor: pointer;
+                    }
+          }
+}

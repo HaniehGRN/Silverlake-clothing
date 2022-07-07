@@ -1,0 +1,22 @@
+* {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+}
+
+.collection-container {
+          display: flex;
+          flex-wrap: wrap;
+          width: 100%;
+          // height: %;
+          overflow-y: scroll;
+          align-items: center;
+          justify-content: center;
+          padding: 15px 0;
+}
+
+
+
+
+
+

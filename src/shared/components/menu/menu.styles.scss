@@ -6,6 +6,33 @@
 
 .menu-container {
           display: flex;
-          flex-direction: column;
-          padding: 30px 20px;
+          padding: 10px 40px;
+
+          .collection {
+                    text-decoration: none;
+                    padding: 0 20px;
+                    border-right: 2px solid rgba(0, 0, 0, 0.1);
+                    color: rgb(247, 242, 242);
+                    font-size: large;
+                    opacity: 0.8;
+          }
+
+          :last-child {
+                    border-right: none;
+          }
+
+          :hover, :active, .collection.clicked  {
+                    color:#fff ;
+                    font-weight: bold;
+                    opacity: 1;
+          }
+
+          :active {
+                    transform: scale(0.9);
+          }
+
+          .collection.clicked  {
+                    transform: scale(1);
+          }
+
 }
