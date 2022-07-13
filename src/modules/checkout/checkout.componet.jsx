@@ -72,11 +72,7 @@ const CheckoutPage = () => {
                               <div className="order-and-total">
                                         <div className="order-summary">
                                                   <h2>Order summary</h2>
-                                                  <div className="checkout-items">
-                                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, nesciunt dolores. Veritatis molestias similique, harum est ipsa hic architecto facilis voluptatibus sed? Dolor nihil, optio repellendus illo recusandae doloremque numquam!
-                                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis officia, maxime laboriosam, impedit eveniet adipisci tempore veniam provident dolore minima labore ipsa facilis sed inventore eos tempora rerum, rem ipsum.
-                                                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti voluptatum repudiandae quasi quae minus rerum repellendus quia cumque minima provident fugit illum, quidem aspernatur, blanditiis porro error iste velit. Debitis!
-                                                  </div>
+                                                  <div className="checkout-items"></div>
                                         </div>
                                         <hr />
                                         <div className="apply-gift-discount">

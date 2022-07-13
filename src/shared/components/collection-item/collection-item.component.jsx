@@ -11,7 +11,7 @@ const CollectionItem = ({ item }) => {
 
           // const dispatch = useDispatch();
 
-          const imageUrl = "https://i.ibb.co/px2tCc3/jackets.png";
+          const imageUrl = "https://i.ibb.co/GCCdy8t/womens.png";
           const name = "blue jean";
           const price = 19.8;
 

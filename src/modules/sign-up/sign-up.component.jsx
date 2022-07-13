@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+
 import { AiOutlineUser } from "react-icons/ai";
 import { MdEmail, MdOutlinePassword } from "react-icons/md";
 import { GiConfirmed } from "react-icons/gi";
@@ -7,8 +9,11 @@ import FormInput from "../../shared/components/form-input/form-input.component";
 import CustomButton from "../../shared/components/custom-button/custom-button.component";
 
 import "./sign-up.styles.scss";
+import { setAuthMode } from "../../config/redux/features/auth/authSlice";
 
 const SignUp = () => {
+
+    const dispatch = useDispatch();
 
     const [email, setEmail] = useState("");
     const [signUpHoverState, setSignUpHoverState] = useState(true);
@@ -45,7 +50,7 @@ const SignUp = () => {
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad neque nobis debitis aperiam
                     dolor ullam quia? Dolorum quasi, tempore ut asperiores qui distinctio temporibus sunt.
                 </p>
-                <CustomButton>I Already have an account</CustomButton>
+                <CustomButton onClick={dispatch(() => setAuthMode("sign-in")) }>I Already have an account</CustomButton>
             </div>
             <div
                 className={`auth-part ${signUpHoverState === true ? "highlighted" : ""}`}

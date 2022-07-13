@@ -2,7 +2,9 @@ import CollectionItem from "../../shared/components/collection-item/collection-i
 
 import "./collection.styles.scss"
 
-const Collection = () => {
+/**item.forEach */
+
+const Collection = ({item}) => {
           return (
                     <div className="collection-container">
                               <CollectionItem />

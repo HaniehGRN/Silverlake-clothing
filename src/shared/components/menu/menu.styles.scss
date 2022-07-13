@@ -7,12 +7,19 @@
 .menu-container {
           display: flex;
           padding: 10px 40px;
+          // color: rgba(13, 13, 13, 0.709);
+          // color: rgba(0, 0, 0, 0.1);
+          color: rgba(0, 0, 0, 0.6);
+          font-size: larger;
 
           .collection {
                     text-decoration: none;
                     padding: 0 20px;
-                    border-right: 2px solid rgba(0, 0, 0, 0.1);
-                    color: rgb(247, 242, 242);
+                    border-right: 2px solid rgba(0, 0, 0, 0.3);
+                    // color: rgb(247, 242, 242);
+                    // color: rgba(13, 13, 13, 0.709);
+                    // color: rgba(0, 0, 0, 0.1);
+                    color: rgba(0, 0, 0, 0.6);
                     font-size: large;
                     opacity: 0.8;
           }
@@ -21,8 +28,11 @@
                     border-right: none;
           }
 
-          :hover, :active, .collection.clicked  {
-                    color:#fff ;
+          :hover,
+          :active,
+          .collection.clicked {
+                    // color:#fff ;
+                    color: rgba(0, 0, 0, 0.6);
                     font-weight: bold;
                     opacity: 1;
           }
@@ -31,8 +41,7 @@
                     transform: scale(0.9);
           }
 
-          .collection.clicked  {
+          .collection.clicked {
                     transform: scale(1);
           }
-
 }

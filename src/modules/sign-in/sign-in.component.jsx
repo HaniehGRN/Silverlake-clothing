@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { MdEmail, MdOutlinePassword } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import setCurrentUser from "../../config/redux/features/user/userSlice";
 
 import CustomButton from "../../shared/components/custom-button/custom-button.component";
 
@@ -12,16 +13,25 @@ import "./sign-in.styles.scss";
 
 const SignIn = () => {
 
+          const dispatch = useDispatch();
+
           const [email, setEmail] = useState('');
+          const [passWord, setPassWord] = useState('');
+
+
           const [infoHoverState, setInfoHoverState] = useState(false);
           const [signInHoverState, setSignInHoverState] = useState(true);
 
-          const handleChange = (event) => {
+          const handleEmailChange = (event) => {
                     setEmail(event.target.value);
           }
 
+          const handlePassChange = (event) => {
+                    setPassWord(event.target.value);
+          }
+
           const handleSubmit = () => {
-                    // store 
+                    dispatch(() => setCurrentUser({ id: 1, dispalyName: "hanieh", email: "hanieh@gmail.com" }));
           }
 
           const handleMouseEnterInfo = () => {
@@ -40,7 +50,12 @@ const SignIn = () => {
 
           const handleMouseLeaveSignIn = () => {
                     ///
+                    console.log("yay")
           }
+
+          // const handleSignUp = () => {
+          //           dispatch(() => setCurrentUser({ id: 1, dispalyName: "hanieh", email: "hanieh@gmail.com" }));
+          // }
 
           return (
                     <div className="sign-in">
@@ -66,7 +81,7 @@ const SignIn = () => {
                                                             type="email"
                                                             value={email}
                                                             label="Email"
-                                                            handleChange={handleChange}
+                                                            handleChange={handleEmailChange}
                                                             required
                                                   >
                                                             <MdEmail />
@@ -74,15 +89,15 @@ const SignIn = () => {
                                                   <FormInput
                                                             name="password"
                                                             type="password"
-                                                            value={email}
+                                                            value={passWord}
                                                             label="Password"
-                                                            handleChange={handleChange}
+                                                            handleChange={handlePassChange}
                                                             required
                                                   >
                                                             <MdOutlinePassword />
                                                   </FormInput>
-                                                  <CustomButton>SIGN IN</CustomButton>
-                                                  <CustomButton type="google-sign-in"><FcGoogle  className="google-icon"/>SIGN IN WITH GOOGLE</CustomButton>
+                                                  <CustomButton onClick={handleSubmit}>SIGN IN</CustomButton>
+                                                  <CustomButton type="google-sign-in"><FcGoogle className="google-icon" />SIGN IN WITH GOOGLE</CustomButton>
                                                   <a href="/" className="frgt-pass-link">Forget Password</a>
                                                   {
                                                             /*Link */
