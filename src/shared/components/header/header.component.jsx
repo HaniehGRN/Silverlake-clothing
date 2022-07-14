@@ -17,10 +17,6 @@ const Header = () => {
 
     const currentUser = useSelector((state) => state.user.currentUser);
 
-    // const handleSignOut = () => {
-    //     dispatch(() => setCurrentUser(null));
-    // }
-
     return (
         <div className="header-container">
             <div className="logo-container">
@@ -41,7 +37,7 @@ const Header = () => {
                 </Link>
                 <Link className="icon" to="/auth">
                     {
-                        currentUser ? <HiLogout onClick={dispatch(() => setCurrentUser(null))} /> : <HiLogin />
+                        currentUser ? <HiLogout onClick={() => dispatch(setCurrentUser(null))} /> : <HiLogin />
                     }
                 </Link>
             </div>

@@ -1,13 +1,16 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { applyMiddleware, configureStore } from '@reduxjs/toolkit';
+
+import logger from 'redux-logger';
+
 import userReducer from "./features/user/userSlice";
-import cartSlice from './features/cart/cartSlice';
-import authSlice from './features/auth/authSlice';
+import cartReducer from './features/cart/cartSlice';
+import authReducer from './features/auth/authSlice';
 
 const store = configureStore({
           reducer: {
                     user: userReducer,
-                    cart: cartSlice,
-                    auth: authSlice
+                    cart: cartReducer,
+                    auth: authReducer
           }
 });
 

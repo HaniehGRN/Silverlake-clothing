@@ -2,17 +2,19 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import SignUp from "../sign-up/sign-up.component";
 import SignIn from "../sign-in/sign-in.component";
+import Login from "../login/login.component";
 
 import "./auth.styles.scss";
+import { Link } from "react-router-dom";
 
 const AuthPage = () => {
 
-          const authMode = useSelector((state) => state.auth.authMode);
+          const authmode = useSelector((state) => state.auth.authMode);
 
           return (
                     <div className="auth-page">
                               <h2>Welcome.</h2>
-                              {authMode === "sign-up" ? <SignUp /> : <SignIn />}
+                              {authmode==="sign-up" ? <SignUp /> : <SignIn />}
                     </div>
           )
 };

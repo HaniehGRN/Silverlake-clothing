@@ -10,12 +10,15 @@ import CheckoutPage from "./modules/checkout/checkout.componet";
 import CollectionItem from "./shared/components/collection-item/collection-item.component";
 import Collection from "./modules/collection/collection.component";
 import HomePage from "./modules/homepage/components/slider/hompage.component";
+import Login from "./modules/login/login.component";
+import SignUp from "./modules/sign-up/sign-up.component";
 
 import "./App.css";
 
 function App() {
 
   const currentUser = useSelector((state) => state.user.currentUser);
+  const authmode = useSelector((state) => state.auth.authMode);
 
   return (
     <div className="App">
@@ -25,19 +28,19 @@ function App() {
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/checkout" element={<CheckoutPage />} />
           <Route exact path="/auth" element={
-            // currentUser ?
-            //   <Navigate to="/" />
-            //   : <AuthPage />
-            <AuthPage />} />
+            currentUser ?
+              <Navigate to="/" />
+              : <AuthPage />} />
           <Route exact path="/search" />
           <Route path="*" element={<HomePage />} />
         </Routes>
       </Router>
-      {/* <HomePage /> */}
-      {/* <Menu /> */}
-      {/* <Collection /> */}
-      {/* <CheckoutPage /> */}
-      {/* <AuthPage /> */}
+      {/* <Router>
+      {authmode === "sign-in" ? <SignIn /> : <SignUp />}
+        <Routes>
+          <Route exact path="/checkout" element={<CheckoutPage />} />
+        </Routes>
+      </Router> */}
     </div>
   );
 }

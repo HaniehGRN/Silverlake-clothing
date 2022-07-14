@@ -19,11 +19,13 @@ const SignUp = () => {
     const [signUpHoverState, setSignUpHoverState] = useState(true);
     const [infoHoverState, setInfoHoverState] = useState(false);
 
-    const handleChange = (event) => {
-        setEmail(event.target.value);
+    const handleChange = (e) => {
+        e.preventDefault();
+        setEmail(e.target.value);
     }
 
-    const handleMouseEnterSignUp = () => {
+    const handleMouseEnterSignUp = (e) => {
+        e.preventDefault();
         setSignUpHoverState(true);
     }
 
@@ -50,7 +52,7 @@ const SignUp = () => {
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad neque nobis debitis aperiam
                     dolor ullam quia? Dolorum quasi, tempore ut asperiores qui distinctio temporibus sunt.
                 </p>
-                <CustomButton onClick={dispatch(() => setAuthMode("sign-in")) }>I Already have an account</CustomButton>
+                <CustomButton>I Already have an account</CustomButton>
             </div>
             <div
                 className={`auth-part ${signUpHoverState === true ? "highlighted" : ""}`}
