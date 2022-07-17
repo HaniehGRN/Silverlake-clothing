@@ -4,11 +4,11 @@
         padding: 0;
 }
 
-.sign-in {
+.sign-container {
         .auth-part {
-                a {
+                .frgt-pass-link {
                         position: absolute;
-                        bottom: 40px;
+                        bottom: 45px;
                         left: 33%;
                         font-size: larger;
                         text-decoration: none;

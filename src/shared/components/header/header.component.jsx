@@ -35,18 +35,19 @@ const Header = () => {
                 <Link className="icon" to="/checkout">
                     <HiShoppingCart />
                 </Link>
-                <Link className="icon" to="/auth">
-                    {
-                        currentUser ? <HiLogout onClick={() => dispatch(setCurrentUser(null))} /> : <HiLogin />
-                    }
-                </Link>
+                {
+                    currentUser ?
+                        <Link className="icon" to="/">
+                            <HiLogout onClick={() => dispatch(setCurrentUser(null))} />
+                        </Link>
+                        : <Link className="icon" to="/auth">
+                            <HiLogin />
+                        </Link>
+                }
+
             </div>
         </div>
     )
 }
-// HiLogout
-// HiLogin
-// HiShoppingCart
-// HiSearch
 
 export default Header;

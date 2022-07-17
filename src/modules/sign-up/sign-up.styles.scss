@@ -65,7 +65,7 @@
                 flex-direction: column;
                 width: 30%;
                 padding: 15px 15px 15px 50px;
-                justify-content: space-between;
+                // justify-content: space-between;
                 left: 49%;
 
                 &.highlighted {
@@ -121,7 +121,7 @@
 
                 .custom-button {
                         position: relative;
-                        bottom: -125px;
+                        bottom: -87px;
                         border: 2px solid rgb(153, 153, 215);
                 }
         }

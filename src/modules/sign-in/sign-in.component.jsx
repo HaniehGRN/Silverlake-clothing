@@ -7,8 +7,9 @@ import { FcGoogle } from "react-icons/fc";
 
 import FormInput from "../../shared/components/form-input/form-input.component";
 import CustomButton from "../../shared/components/custom-button/custom-button.component";
-import {setAuthMode} from "../../config/redux/features/auth/authSlice";
+import { setAuthMode } from "../../config/redux/features/auth/authSlice";
 import { setCurrentUser } from "../../config/redux/features/user/userSlice";
+import { SignInToFirestore, GoogleSignInToFirestore } from "../../config/firebase/firebase.utils";
 
 import "../sign-up/sign-up.styles.scss";
 import "./sign-in.styles.scss";
@@ -17,19 +18,28 @@ const SignIn = () => {
 
           const dispatch = useDispatch();
 
-          const [email, setEmail] = useState("");
-          const [passWord, setPassWord] = useState('');
+          const [userCredentials, setUserCredentials] = useState(
+                    {
+                              email: '',
+                              password: ''
+                    }
+          );
+
           const [signInHoverState, setSignInHoverState] = useState(true);
           const [infoHoverState, setInfoHoverState] = useState(false);
+          const { email, password } = userCredentials;
 
-          const handleEmailChange = (e) => {
-                    e.preventDefault();
-                    setEmail(e.target.value);
+          const inAppSignIn = (user) => {
+                    const userEmail = user.user.email;
+                    const userDisplayName = user.user.displayName;
+                    const userId = user.user.uid;
+                    dispatch(setCurrentUser({ userId, userDisplayName, userEmail }));
+                    console.log(userEmail, userDisplayName, userId);
           }
 
-          const handlePassChange = (e) => {
-                    e.preventDefault();
-                    setPassWord(e.target.value);
+          const handleChange = event => {
+                    const { value, name } = event.target;
+                    setUserCredentials({ ...userCredentials, [name]: value });
           }
 
           const handleMouseEnterInfo = () => {
@@ -47,37 +57,43 @@ const SignIn = () => {
           }
 
           const handleMouseLeaveSignIn = () => {
-                    console.log("yay")
+                    // console.log("yay")
           }
 
           const handleGoogleClick = () => {
-                    console.log("google click")
+                    GoogleSignInToFirestore().then((user) => {
+                              inAppSignIn(user);
+                              console.log(user)
+                    }
+                    )
+                    setUserCredentials({ email: '', password: '' })
           }
 
-          const handleSubmit = (e) => {
-                    e.preventDefault();
-                    dispatch(setCurrentUser({id: 1, dispalyName: "hanieh", email: "hanieh@gmail.com" }));
-                    setPassWord("");
-                    setEmail("");
+          const handleSubmit = () => {
+                    SignInToFirestore(userCredentials).then((user) => {
+                              inAppSignIn(user);
+                    })
+                    setUserCredentials({ email: '', password: '' })
           }
 
-          const handleClick = (e) => {
-                    e.preventDefault(); 
+          const handleClick = () => {
                     dispatch(setAuthMode("sign-up"));
           }
 
           return (
                     <div className="sign-container">
-                              <form
+                              <div
                                         className={`info-part ${infoHoverState === true ? "highlighted" : ""}`}
                                         onMouseEnter={handleMouseEnterInfo}
                                         onMouseLeave={handleMouseLeaveInfo}
-                                        onSubmit={handleClick}
                               >
                                         <h1>info part</h1>
-                                        <p>lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll</p>
-                                        <CustomButton>i don't have an account</CustomButton>
-                              </form>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad neque nobis debitis aperiam
+                                                  dolor ullam quia? Dolorum quasi, tempore ut asperiores qui distinctio temporibus sunt.
+                                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad neque nobis debitis aperiam
+                                                  dolor ullam quia? Dolorum quasi, tempore ut asperiores qui distinctio temporibus sunt.</p>
+                                        <CustomButton onclick={handleClick}>I Don't have an account</CustomButton>
+                              </div>
                               <form
                                         className={`auth-part ${signInHoverState === true ? "highlighted" : ""}`}
                                         onMouseEnter={handleMouseEnterSignIn}
@@ -88,7 +104,7 @@ const SignIn = () => {
                                                   type="email"
                                                   value={email}
                                                   label="Email"
-                                                  handleChange={handleEmailChange}
+                                                  handleChange={handleChange}
                                                   required
                                         >
                                                   <MdEmail />
@@ -96,9 +112,9 @@ const SignIn = () => {
                                         <FormInput
                                                   name="password"
                                                   type="password"
-                                                  value={passWord}
+                                                  value={password}
                                                   label="Password"
-                                                  handleChange={handlePassChange}
+                                                  handleChange={handleChange}
                                                   required
                                         >
                                                   <MdOutlinePassword />

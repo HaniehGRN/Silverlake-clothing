@@ -1,21 +1,71 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  updateProfile
+} from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDTcEq0yRJ7wbYqpy_yNu83Wsvt73qghJc",
-  authDomain: "silverlake-97dda.firebaseapp.com",
-  projectId: "silverlake-97dda",
-  storageBucket: "silverlake-97dda.appspot.com",
-  messagingSenderId: "851311038013",
-  appId: "1:851311038013:web:729eef3000d500d3d52454",
-  measurementId: "G-QGT56M7E8K"
+  apiKey: "AIzaSyDLpET_8ZyhRKHM_eroZlwUeoC_nL-kfOY",
+  authDomain: "silverlake-f496b.firebaseapp.com",
+  projectId: "silverlake-f496b",
+  storageBucket: "silverlake-f496b.appspot.com",
+  messagingSenderId: "109854693674",
+  appId: "1:109854693674:web:2489981040cc29b418e653"
 };
 
 // Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+export const db = getFirestore(app);
+const auth = getAuth();
+
+export const SignUpToFirestore = (email, password, displayName) => {
+  createUserWithEmailAndPassword(auth, email, password).then((user) => {
+    const displayname = displayName;
+    updateProfile(auth.currentUser, { displayName: displayname }).then(() => {
+      console.log("user profile updated !")
+    }).catch(error => {
+      alert(error.message, error.code)
+    })
+  }).catch(error => {
+    alert(error.message, error.code)
+  })
+  return (auth.currentUser)
+}
+
+export const SignInToFirestore = async ({ email, password }) => {
+  try {
+    return await signInWithEmailAndPassword(auth, email, password);
+  } catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode, errorMessage);
+  }
+}
+
+export const GoogleSignInToFirestore = async () => {
+  try {
+    const provider = new GoogleAuthProvider();
+    provider.addScope('profile');
+    provider.addScope('email');
+    return await signInWithPopup(auth, provider);
+  }
+  catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode, errorMessage);
+  }
+}
