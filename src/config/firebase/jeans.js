@@ -23,26 +23,6 @@ const jeans = {
                               imageUrl: "https://i.postimg.cc/rp54M4ZW/Vintage-Skinny-Jeans.jpg",
                               name: "Vintage Skinny Jeans",
                               price: 14.99
-                    },
-                    {
-                              id: ,
-                              imageUrl: "",
-                              name: "",
-                              price
-                    },
-                    {
-                              id: ,
-                              imageUrl: "",
-                              name: "",
-                              price
-                    },
-                    {
-                              id: ,
-                              imageUrl: "",
-                              name: "",
-                              price
                     }
-
-          
           ]
 }

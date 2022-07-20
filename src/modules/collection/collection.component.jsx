@@ -4,21 +4,13 @@ import "./collection.styles.scss"
 
 /**item.forEach */
 
-const Collection = ({item}) => {
+const Collection = ({ items, title }) => {
           return (
                     <div className="collection-container">
-                              <CollectionItem />
-                              <CollectionItem />
-                              <CollectionItem />
-                              <CollectionItem />
-                              <CollectionItem />
-                              <CollectionItem />
-                              <CollectionItem />
-                              <CollectionItem />
-                              <CollectionItem />
-                              <CollectionItem />
-                              <CollectionItem />
-                              <CollectionItem />
+                              {/* {
+                                        items.map((item) => <CollectionItem item={item} />)
+                              } */}
+                              {/* <CollectionItem /> */}
                     </div>
           );
 }

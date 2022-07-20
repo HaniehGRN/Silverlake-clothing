@@ -60,6 +60,11 @@ const SignUp = () => {
         setInfoHoverState(false);
         setSignUpHoverState(true);
     }
+    
+    const handleClick = () => {
+        dispatch(setAuthMode("sign-in"));
+    }
+
 
     const handleSignUp = () => {
         if (email != '' && password != '' && displayName != '' && confirmPassword != '') {
@@ -72,16 +77,13 @@ const SignUp = () => {
                 dispatch(setCurrentUser({ userId, userDisplayName, userEmail }));
             }
         }
+        handleClick();
         setUserCredentials({
             displayName: '',
             email: '',
             password: '',
             confirmPassword: ''
         })
-    }
-
-    const handleClick = () => {
-        dispatch(setAuthMode("sign-in"));
     }
 
     return (

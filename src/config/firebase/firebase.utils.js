@@ -9,7 +9,7 @@ import {
   GoogleAuthProvider,
   updateProfile
 } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, doc, getDocs, collection, query, get, docs, where } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -68,4 +68,23 @@ export const GoogleSignInToFirestore = async () => {
     const errorMessage = error.message;
     console.log(errorCode, errorMessage);
   }
+}
+
+export const fetchCollections = async () => {
+  const q = query(collection(db, "products"));
+  const querySnapshot = await getDocs(q);
+  const transformedCollection = querySnapshot.docs.map((docSnapshot) => {
+    console.log(docSnapshot.data())
+    const { title, items } = docSnapshot.data();
+    return {
+      title,
+      items,
+      id: docSnapshot.id
+    }
+  })
+  return transformedCollection.reduce((accumulator, collection) => {
+    accumulator[collection.title] = collection;
+    return accumulator;
+  }, {});
+  // return querySnapshot;
 }

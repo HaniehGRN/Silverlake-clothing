@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { SiBigcartel } from "react-icons/si";
-import { HiMail, HiShoppingCart, HiLogin, HiLogout, HiSearch } from "react-icons/hi";
-import { MdMenuOpen } from "react-icons/md";
+import { HiShoppingCart, HiLogin, HiLogout, HiSearch } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { setCurrentUser } from "../../../config/redux/features/user/userSlice";
-
-import Modal from "../../../modules/auth/auth.component";
 
 import "./header.styles.scss";
 
@@ -29,9 +26,6 @@ const Header = () => {
                 <Link className="icon" to="/search">
                     <HiSearch />
                 </Link>
-                {/* <div>
-                    <HiLogout />
-                </div> */}
                 <Link className="icon" to="/checkout">
                     <HiShoppingCart />
                 </Link>
