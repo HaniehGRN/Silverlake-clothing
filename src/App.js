@@ -5,7 +5,11 @@ import { useSelector, useDispatch } from "react-redux/es/exports";
 import Header from "./shared/components/header/header.component";
 import AuthPage from "./modules/auth/auth.component";
 import CheckoutPage from "./modules/checkout/checkout.componet";
+<<<<<<< HEAD
 import HomePage from "./modules/homepage/hompage.component";
+=======
+import HomePage from "./modules/homepage/components/slider/hompage.component";
+>>>>>>> 4843a7dae4a05d5068f853dadeb1be65786a1c83
 
 import "./App.css";
 import { setFetchedCollections, setLoadingState } from "./config/redux/features/products/productsSlice";
@@ -14,13 +18,24 @@ import { fetchCollections } from "./config/firebase/firebase.utils";
 function App() {
 
   const currentUser = useSelector((state) => state.user.currentUser);
+<<<<<<< HEAD
+=======
+  const collections = useSelector((state) => state.products.collections);
+>>>>>>> 4843a7dae4a05d5068f853dadeb1be65786a1c83
   const dispatch = useDispatch();
 
   useEffect(() => {
     fetchCollections()
       .then((fetchedCollections) => {
+<<<<<<< HEAD
         dispatch(setFetchedCollections(fetchedCollections))
         dispatch(setLoadingState(false))
+=======
+        console.log(fetchedCollections.data)
+        dispatch(setFetchedCollections(fetchedCollections))
+        dispatch(setLoadingState(false))
+        console.log(collections, "app rendering")
+>>>>>>> 4843a7dae4a05d5068f853dadeb1be65786a1c83
       })
       .catch((error) => {
         console.log(error.code, error.message)

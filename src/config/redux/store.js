@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 import { configureStore } from '@reduxjs/toolkit';
+=======
+import { applyMiddleware, configureStore } from '@reduxjs/toolkit';
+
+import logger from 'redux-logger';
+>>>>>>> 4843a7dae4a05d5068f853dadeb1be65786a1c83
 
 import userReducer from "./features/user/userSlice";
 import cartReducer from './features/cart/cartSlice';

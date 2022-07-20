@@ -10,7 +10,11 @@
   padding: 30px 25px;
   height: 100vh;
   color: rgba(13, 13, 13, 0.752);
+<<<<<<< HEAD
   background-image: url("../bgPhoto.PNG");
+=======
+  background-image: url("../iCapture.PNG");
+>>>>>>> 4843a7dae4a05d5068f853dadeb1be65786a1c83
   background-repeat: no-repeat;
   background-size: cover;
 }
