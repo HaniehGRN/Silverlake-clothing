@@ -1,23 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import { useMemo, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux/es/exports";
+
+import Header from "./shared/components/header/header.component";
+import AuthPage from "./modules/auth/auth.component";
+import CheckoutPage from "./modules/checkout/checkout.componet";
+import HomePage from "./modules/homepage/hompage.component";
+
+import "./App.css";
+import { setFetchedCollections, setLoadingState } from "./config/redux/features/products/productsSlice";
+import { fetchCollections } from "./config/firebase/firebase.utils";
 
 function App() {
+
+  const currentUser = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetchCollections()
+      .then((fetchedCollections) => {
+        dispatch(setFetchedCollections(fetchedCollections))
+        dispatch(setLoadingState(false))
+      })
+      .catch((error) => {
+        console.log(error.code, error.message)
+      })
+  }, [dispatch])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Header />
+        <Routes>
+          <Route exact path="/" element={<HomePage />} />
+          <Route path=":collectionId" element={<HomePage />} />
+          <Route exact path="/checkout" element={<CheckoutPage />} />
+          <Route exact path="/auth" element={
+            currentUser ?
+              <Navigate to="/" />
+              : <AuthPage />} />
+          <Route exact path="/search" />
+          <Route path="*" element={<HomePage />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

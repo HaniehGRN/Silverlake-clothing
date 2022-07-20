@@ -1,0 +1,24 @@
+* {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+}
+
+.sign-container {
+        .auth-part {
+                .frgt-pass-link {
+                        position: absolute;
+                        bottom: 45px;
+                        left: 33%;
+                        font-size: larger;
+                        text-decoration: none;
+                        cursor: pointer;
+                }
+        }
+
+        .info-part {
+                .custom-button {
+                        margin-top: 40px;
+                }
+        }
+}

@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: rgba(13, 13, 13, 0.709);
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    justify-content: space-between;
+
+    .logo-container {
+        display: flex;
+        position: relative;
+        .logo {
+            font-size: 30px;
+            // padding: 10px;
+        }
+
+        span {
+            font-size: 30px;
+            position: absolute;
+            top: -5px;
+            padding-left: 5px;
+        }
+    }
+
+    .options-container {
+        display: flex;
+
+        .icon {
+            padding: 5px;
+            font-size: 30px;
+        }
+    }
+}
