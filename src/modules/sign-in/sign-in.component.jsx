@@ -35,6 +35,7 @@ const SignIn = () => {
                     const userId = user.user.uid;
                     dispatch(setCurrentUser({ userId, userDisplayName, userEmail }));
                     console.log(userEmail, userDisplayName, userId);
+                    setUserCredentials({ email: '', password: '' })
           }
 
           const handleChange = event => {
@@ -61,19 +62,27 @@ const SignIn = () => {
           }
 
           const handleGoogleClick = () => {
-                    GoogleSignInToFirestore().then((user) => {
-                              inAppSignIn(user);
-                              console.log(user)
-                    }
-                    )
-                    setUserCredentials({ email: '', password: '' })
+                    GoogleSignInToFirestore()
+                              .then((user) => {
+                                        inAppSignIn(user);
+                                        console.log(user)
+                              })
+                              .catch((error) => {
+                                        setUserCredentials({ email: '', password: '' })
+                                        alert(error.code, error.message);
+                              })
           }
 
           const handleSubmit = () => {
-                    SignInToFirestore(userCredentials).then((user) => {
-                              inAppSignIn(user);
-                    })
-                    setUserCredentials({ email: '', password: '' })
+                    console.log("handleSubmit")
+                    SignInToFirestore(userCredentials)
+                              .then((user) => {
+                                        inAppSignIn(user);
+                              })
+                              .catch((error) => {
+                                        setUserCredentials({ email: '', password: '' })
+                                        alert(error.code, error.message);
+                              })
           }
 
           const handleClick = () => {
@@ -87,7 +96,7 @@ const SignIn = () => {
                                         onMouseEnter={handleMouseEnterInfo}
                                         onMouseLeave={handleMouseLeaveInfo}
                               >
-                                        <h1>info part</h1>
+                                        <h1>Sign in to your account</h1>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad neque nobis debitis aperiam
                                                   dolor ullam quia? Dolorum quasi, tempore ut asperiores qui distinctio temporibus sunt.
                                                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad neque nobis debitis aperiam

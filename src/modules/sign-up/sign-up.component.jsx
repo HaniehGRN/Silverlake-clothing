@@ -70,7 +70,6 @@ const SignUp = () => {
         if (email != '' && password != '' && displayName != '' && confirmPassword != '') {
             if (passwordValidation()) {
                 const user = SignUpToFirestore(email, password, displayName);
-                console.log(user)
                 const userEmail = user.email;
                 const userDisplayName = user.displayName;
                 const userId = user.uid;
