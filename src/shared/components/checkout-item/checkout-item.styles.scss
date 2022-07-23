@@ -2,14 +2,16 @@
           width: 100%;
           display: flex;
           min-height: 100px;
-          border-bottom: 1px solid #a9a9a9;
+          // border-bottom: 1px solid #a9a9a9;
           padding: 15px 0;
-          font-size: 20px;
+          font-size: 18px;
           align-items: center;
+          color: rgba(13, 13, 13, 0.709);
 
           .image-container {
-                    width: 23%;
-                    padding-right: 15px;
+                    width: 110px;
+                    height: 100px;
+                    padding-right: 13px;
 
                     img {
                               width: 100%;
@@ -17,10 +19,24 @@
                     }
           }
 
-          .name,
-          .quantity,
-          .price {
-                    width: 23%;
+          .other-info {
+                    width: 63%;
+          }
+
+          .line-one,
+          .line-two {
+                    display: flex;
+                    justify-content: space-between;
+                    position: relative;
+                    margin: 0 0px 20px 5px;
+          }
+
+          .line-two {
+                    // justify-content: space-around;
+                    width: 58%;
+                    margin-bottom: 0px;
+                    left: 2px;
+                    font-size: 16px;
           }
 
           .quantity {
@@ -28,6 +44,7 @@
 
                     .arrow {
                               cursor: pointer;
+                              transform: translateY(10%);
                     }
 
                     .value {
@@ -38,5 +55,6 @@
           .remove-button {
                     padding-left: 12px;
                     cursor: pointer;
+                    transform: translateY(22%) scale(1.4);
           }
 }

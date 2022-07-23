@@ -1,4 +1,5 @@
 export const addItemToCart = (cartItems, cartItemToAdd) => {
+          console.log(cartItems, cartItemToAdd)
           const existingCartItem = cartItems.find(
                     cartItem => cartItem.id === cartItemToAdd.id
           );
@@ -10,6 +11,7 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
                                         : cartItem
                     )
           }
+          console.log(cartItems, cartItemToAdd)
 
           return [...cartItems, { ...cartItemToAdd, quantity: 1 }]
 };
@@ -29,3 +31,7 @@ export const removeItemFromCart = (cartItems, cartItemToRemove) => {
                               : cartItem
           )
 };
+
+export const calTotal = (total, price) => {
+          return total + price;
+}

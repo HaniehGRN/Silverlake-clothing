@@ -7,12 +7,18 @@ import { Link } from "react-router-dom";
 import { setCurrentUser } from "../../../config/redux/features/user/userSlice";
 
 import "./header.styles.scss";
+import { clearCart } from "../../../config/redux/features/cart/cartSlice";
 
 const Header = () => {
 
     const dispatch = useDispatch();
 
     const currentUser = useSelector((state) => state.user.currentUser);
+
+    const handleLogout = () => {
+        dispatch(setCurrentUser(null));
+        dispatch(clearCart());
+    }
 
     return (
         <div className="header-container">
@@ -32,13 +38,12 @@ const Header = () => {
                 {
                     currentUser ?
                         <Link className="icon" to="/">
-                            <HiLogout onClick={() => dispatch(setCurrentUser(null))} />
+                            <HiLogout onClick={handleLogout} />
                         </Link>
                         : <Link className="icon" to="/auth">
                             <HiLogin />
                         </Link>
                 }
-
             </div>
         </div>
     )

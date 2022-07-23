@@ -1,6 +1,7 @@
 // this module works fine
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
-import { useState } from "react";
 import { RiErrorWarningLine } from "react-icons/ri";
 import { GoCreditCard } from "react-icons/go";
 import { BsCalendar3 } from "react-icons/bs";
@@ -9,12 +10,19 @@ import { ImGift } from "react-icons/im";
 
 import FormInput from "../../shared/components/form-input/form-input.component";
 import CustomButton from "../../shared/components/custom-button/custom-button.component";
+import CheckoutItem from "../../shared/components/checkout-item/checkout-item.component";
 
 import "./checkout.styles.scss";
 
 const CheckoutPage = () => {
 
           const [name, setName] = useState("");
+          const cartItems = useSelector((state) => state.cart.items);
+          const total = useSelector((state) => state.cart.total);
+
+          useEffect(() => {
+                    console.log(cartItems);
+          }, [cartItems])
 
           const handleChange = (event) => {
                     setName(event.target.value);
@@ -74,7 +82,17 @@ const CheckoutPage = () => {
                               <div className="order-and-total">
                                         <div className="order-summary">
                                                   <h2>Order summary</h2>
-                                                  <div className="checkout-items"></div>
+                                                  {
+                                                            cartItems.length > 0 ?
+                                                                      <div className="checkout-items">
+                                                                                {
+                                                                                          cartItems.map((cartItem) =>
+                                                                                                    <CheckoutItem key={cartItem.id} cartItem={cartItem} cartItems={cartItems} />
+                                                                                          )
+                                                                                }
+                                                                      </div>
+                                                                      : <p>your cart is empty</p>
+                                                  }
                                         </div>
                                         <hr />
                                         <div className="apply-gift-discount">
@@ -106,7 +124,7 @@ const CheckoutPage = () => {
                                                   </div>
                                                   <div className="total">
                                                             <span>Total</span>
-                                                            <span className="amount">$20.52</span>
+                                                            <span className="amount">{total}</span>
                                                   </div>
                                         </div>
                               </div>

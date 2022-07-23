@@ -13,8 +13,6 @@ const Menu = () => {
 
     const [clickState, setClickState] = useState("shirts");
     const dispatch = useDispatch();
-    // const TriggeredCollectionName = useSelector(() => selectTriggeredCollectionName());
-    // const collections = useSelector((state) => selectCollections(state))
 
     const handleClick = (e, collectionTitle) => {
         e.preventDefault();
