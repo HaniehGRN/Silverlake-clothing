@@ -32,6 +32,8 @@ export const removeItemFromCart = (cartItems, cartItemToRemove) => {
           )
 };
 
-export const calTotal = (total, price) => {
-          return total + price;
+export const calTotal = (cartItems) => {
+          return cartItems.reduce(
+                    (accumalatedQuantity, cartItem) => accumalatedQuantity + cartItem.quantity * cartItem.price
+                    , 0)
 }

@@ -19,7 +19,7 @@ const CollectionItem = ({ item }) => {
           const handleAddItem = () => {
                     const updatedCartItems = addItemToCart(cartItems, item);
                     dispatch(addItem(updatedCartItems));
-                    const updatedTotal = calTotal(total, price);
+                    const updatedTotal = calTotal(updatedCartItems);
                     dispatch(setTotal(updatedTotal));
           }
 

@@ -2,8 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { TiMinus, TiPlus, TiTimes } from "react-icons/ti";
 
-import { removeItem, addItem, clearItemFromCart } from "../../../config/redux/features/cart/cartSlice";
-import { addItemToCart, removeItemFromCart } from "../../../config/redux/features/cart/cart.utils";
+import { removeItem, addItem, clearItemFromCart, setTotal } from "../../../config/redux/features/cart/cartSlice";
+import { addItemToCart, removeItemFromCart, calTotal } from "../../../config/redux/features/cart/cart.utils";
 
 import "./checkout-item.styles.scss";
 import { useEffect } from "react";
@@ -11,7 +11,7 @@ import { useEffect } from "react";
 const CheckoutItem = ({ cartItem, cartItems }) => {
 
           const { name, imageUrl, quantity, price } = cartItem;
-
+          const total = useSelector((state) => state.cart.total);
           const dispatch = useDispatch();
 
           useEffect(() => {
@@ -21,15 +21,21 @@ const CheckoutItem = ({ cartItem, cartItems }) => {
           const handleAddItem = () => {
                     const updatedCartItems = addItemToCart(cartItems, cartItem);
                     dispatch(addItem(updatedCartItems));
+                    const updatedTotal = calTotal(updatedCartItems);
+                    dispatch(setTotal(updatedTotal));
           }
 
           const handleRemoveItem = () => {
                     const updatedCartItems = removeItemFromCart(cartItems, cartItem);
-                    dispatch(removeItem(updatedCartItems))
+                    dispatch(removeItem(updatedCartItems));
+                    const updatedTotal = calTotal(updatedCartItems);
+                    dispatch(setTotal(updatedTotal));
           }
 
           const handleRemove = () => {
                     dispatch(clearItemFromCart(cartItem));
+                    const updatedTotal = calTotal([]);
+                    dispatch(setTotal(updatedTotal));
           }
 
           return (
